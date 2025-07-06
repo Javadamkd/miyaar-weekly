@@ -5,17 +5,25 @@
   <title>Read Miyaar Weekly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; }
-    #viewer { width: 100%; height: 100vh; border: none; }
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+    iframe { width: 100%; height: 100vh; border: none; }
   </style>
 </head>
 <body>
-  <iframe id="viewer" src="" allowfullscreen></iframe>
+  <iframe id="viewer" src=""></iframe>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const pdf = params.get('pdf');
-    document.getElementById('viewer').src =
-      "/libs/pdfjs/web/viewer.html?file=" + encodeURIComponent("/" + pdf);
+
+    // Construct full URL
+    const fileUrl = `${window.location.origin}/${pdf}`;
+
+    // Set viewer path
+    const viewerUrl = `/libs/pdfjs/web/viewer.html?file=${encodeURIComponent(fileUrl)}`;
+    
+    // Load viewer
+    document.getElementById('viewer').src = viewerUrl;
   </script>
 </body>
 </html>
