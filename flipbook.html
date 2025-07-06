@@ -5,22 +5,26 @@
   <title>Read Miyaar Weekly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-    iframe { width: 100%; height: 100vh; border: none; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: none;
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <iframe id="viewer" src=""></iframe>
-
-  <script>
-    // This line forces the PDF URL to be absolute no matter the query
-    const pdfURL = "https://miyaar.dhpc.in/assets/pdfs/miyaar-issue1.pdf";
-
-    // Build the viewer URL with absolute PDF path
-    const viewerURL = "/libs/pdfjs/web/viewer.html?file=" + encodeURIComponent(pdfURL);
-
-    // Load the PDF viewer
-    document.getElementById('viewer').src = viewerURL;
-  </script>
+  <!-- PDF.js viewer loaded with absolute PDF path -->
+  <iframe
+    src="https://miyaar.dhpc.in/libs/pdfjs/web/viewer.html?file=https://miyaar.dhpc.in/assets/pdfs/miyaar-issue1.pdf"
+    allowfullscreen
+  ></iframe>
 </body>
 </html>
