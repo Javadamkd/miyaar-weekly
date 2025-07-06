@@ -13,17 +13,14 @@
   <iframe id="viewer" src=""></iframe>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const pdf = params.get('pdf');
+    // This line forces the PDF URL to be absolute no matter the query
+    const pdfURL = "https://miyaar.dhpc.in/assets/pdfs/miyaar-issue1.pdf";
 
-    // Construct full URL
-    const fileUrl = `${window.location.origin}/${pdf}`;
+    // Build the viewer URL with absolute PDF path
+    const viewerURL = "/libs/pdfjs/web/viewer.html?file=" + encodeURIComponent(pdfURL);
 
-    // Set viewer path
-    const viewerUrl = `/libs/pdfjs/web/viewer.html?file=${encodeURIComponent(fileUrl)}`;
-    
-    // Load viewer
-    document.getElementById('viewer').src = viewerUrl;
+    // Load the PDF viewer
+    document.getElementById('viewer').src = viewerURL;
   </script>
 </body>
 </html>
